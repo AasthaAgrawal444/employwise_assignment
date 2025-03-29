@@ -17,16 +17,53 @@ const LoginForm = () => {
       toast.success("Login successful!");
       navigate("/users");
     } catch (error) {
-      toast.error(error.message);
+      toast.error("Invalid credentials. Please try again.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 bg-white rounded shadow">
-      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="border p-2 w-full" placeholder="Email" required />
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="border p-2 w-full mt-2" placeholder="Password" required />
-      <button type="submit" className="bg-blue-500 text-white p-2 w-full mt-2">Login</button>
-    </form>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <form 
+        onSubmit={handleSubmit} 
+        className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm"
+      >
+        <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">Login</h2>
+
+        {/* Email Input */}
+        <div className="mb-4">
+          <label className="block text-gray-600 mb-1">Email</label>
+          <input 
+            type="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Enter your email" 
+            required 
+          />
+        </div>
+
+        {/* Password Input */}
+        <div className="mb-6">
+          <label className="block text-gray-600 mb-1">Password</label>
+          <input 
+            type="password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Enter your password" 
+            required 
+          />
+        </div>
+
+        {/* Login Button */}
+        <button 
+          type="submit" 
+          className="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition"
+        >
+          Login
+        </button>
+      </form>
+    </div>
   );
 };
 
